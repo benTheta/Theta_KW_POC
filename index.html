@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+          crossorigin="anonymous">
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <style>
+    </style>
+    <title>Kiwi Saver</title>
+	<script>
+	function parseQueryString(queryString) {
+		let data = {},
+			pairs, pair, separatorIndex, escapedKey, escapedValue, key, value;
+
+		if (queryString === null) {
+			return data;
+		}
+
+		if (queryString.indexOf('?') !== -1) {
+			queryString = queryString.substring(queryString.indexOf('?') + 1);
+		}
+
+		if (queryString === '') {
+			return data;
+		}
+
+		pairs = queryString.split("&");
+
+		for (let i = 0; i < pairs.length; i++) {
+			pair = pairs[i];
+			separatorIndex = pair.indexOf("=");
+
+			if (separatorIndex === -1) {
+				escapedKey = pair;
+				escapedValue = null;
+			} else {
+				escapedKey = pair.substr(0, separatorIndex);
+				escapedValue = pair.substr(separatorIndex + 1);
+			}
+
+			key = decodeURIComponent(escapedKey);
+			value = decodeURIComponent(escapedValue);
+
+			switch (value) {
+				case "true":
+					value = true;
+					break;
+				case "false":
+					value = false;
+					break;
+				case "null":
+					value = null;
+					break;
+				default:
+					let num = Number(value);
+					if (!isNaN(num)) {
+						value = num;
+					}
+
+					break;
+			}
+
+			data[key] = value;
+		}
+
+		return data;
+	}
+
+	$(function() {
+		var query = parseQueryString(window.location.search);
+
+        $("#Age").val(query.age);
+        $("#AgeDisplay").text(query.age);
+
+        $("#CurrentKiwiSaver").val(query.currentKiwiSaver);
+        $("#CurrentKiwiSaverDisplay").text(query.currentKiwiSaver);
+
+        $("#AnnualIncomeBeforeTax").val(query.annualIncomeBeforeTax);
+        $("#AnnualIncomeBeforeTaxDisplay").text(query.annualIncomeBeforeTax);
+
+        $("#UserContribution").val(query.annualIncomeBeforeTax);
+        $("#UserContributionDisplay").text(query.annualIncomeBeforeTax);
+
+        $("#EmployerContribution").val(query.annualIncomeBeforeTax);
+        $("#EmployerContributionDisplay").text(query.annualIncomeBeforeTax);
+
+        $("#TotalKiwiSaverAmount").val(query.annualIncomeBeforeTax);
+        $("#TotalKiwiSaverAmountDisplay").text(query.annualIncomeBeforeTax);
+	});
+	</script>
+</head>
+<body class="bg-light">
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+
+    <!--https://pipedream.com/r/eneijirmpy0z/1JeqrmUnyuGoyCuVlONMjAHXe5w-->
+
+<div class="jumbotron jumbotron-fluid specialjum">
+        <div class="container">
+            <h1 class="display-4">Welcome</h1>
+            <p class="lead ml-5 ml-lg-5">To learn how to grow your Kiwi Saver fill out the form and get in touch!</p>
+        </div>
+</div>
+
+<div class="container-fluid w-75 h-75">
+    <div class="row" style="height: 70px;">
+        <h2>Your details:</h2>  
+    </div> 
+    
+    <div class="">
+        <form action="https://eneijirmpy0z.x.pipedream.net" method="post">
+            <div>
+                <div class="form-group row">
+                        <label for="FirstName" class="col-sm-3 col-form-label">First Name:</label>
+                    <div class="col-sm-7">
+                        <div class="input-group">
+                            <input id="FirstName" class="form-control" name="FirstName" type="text" placeholder="First name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="LastName" class="col-sm-3 col-form-label">Last Name:</label>
+                    <div class="col-sm-7">
+                        <input id="LastName" class="form-control" name="LastName" type="text" placeholder="Last name" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Email" class="col-sm-3 col-form-label">Email:</label>
+                    <div class="col-sm-7">
+                        <input id="Email" class="form-control" name="Email" type="text" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Age" class="col-sm-3 col-form-label">Age:</label><span id="AgeDisplay"></span>
+                    <div class="col-sm-7">
+                        <input id="Age" class="form-control" name="Age" type="hidden"  />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="CurrentKiwiSaver" class="col-sm-3 col-form-label">Current Kiwi Saver:</label><span id="CurrentKiwiSaverDisplay"></span>
+                    <div class="col-sm-7">
+                        <input id="CurrentKiwiSaver" class="form-control" name="CurrentKiwiSaver" type="hidden"  />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="AnnualIncomeBeforeTax" class="col-sm-3 col-form-label">Annual Income Before Tax:</label><span id="AnnualIncomeBeforeTaxDisplay"></span>
+                    <div class="col-sm-7">
+                        <input id="AnnualIncomeBeforeTax" class="form-control" name="AnnualIncomeBeforeTax" type="hidden"  />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="UserContribution" class="col-sm-3 col-form-label">User Contribution:</label><span id="UserContributionDisplay"></span>
+                    <div class="col-sm-7">
+                        <input id="UserContribution" class="form-control" name="UserContribution" type="hidden"  />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="EmployerContribution" class="col-sm-3 col-form-label">Employer Contribution:</label><span id="EmployerContributionDisplay"></span>
+                    <div class="col-sm-7">
+                        <input id="EmployerContribution" class="form-control" name="EmployerContribution" type="hidden"  />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group row">
+                    <label for="EmployerContribution" class="col-sm-3 col-form-label">Total Kiwi Saver Amount:</label><span id="TotalKiwiSaverAmountDisplay"></span>
+                    <div class="col-sm-7">
+                        <input id="TotalKiwiSaverAmount" class="form-control" name="TotalKiwiSaverAmount" type="hidden"  />
+                    </div>
+                </div>
+                <div class="form-group float-right">    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
